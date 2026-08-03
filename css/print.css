@@ -1,0 +1,131 @@
+/* ============================================================
+   列印 / PDF 匯出專用樣式
+   使用瀏覽器原生 window.print() + @media print，
+   確保輸出為可複製文字的 PDF（不使用截圖式套件）。
+
+   設計原則：列印時一律套用「淺色主題」的實際色票（而非灰階化），
+   讓 PDF 保留網頁原本的配色與設計（標籤、卡片底色、時間軸節點等），
+   僅強制背景為純白，避免深色主題底色印成滿版深色。
+   ============================================================ */
+
+@page {
+  size: A4 portrait;
+  margin: 15mm 14mm;
+}
+
+@media print {
+
+  /* ---------- 強制套用淺色主題的實際色票（不論目前是深色或淺色模式） ---------- */
+  html[data-theme="dark"],
+  html[data-theme="light"],
+  :root {
+    --bg: #FFFFFF !important;
+    --surface: #F5F6FB !important;
+    --surface-alt: #EDEAFB !important;
+    --text: #23263B !important;
+    --text-muted: #6B7091 !important;
+    --accent: #2E5AAC !important;
+    --accent-2: #0E9AB8 !important;
+    --line: #DDE0EE !important;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+
+  /* ---------- 隱藏純畫面用元素 ---------- */
+  .sidebar,
+  .sidebar__overlay,
+  #exportPdfBtn,
+  #themeToggleBtn,
+  .hamburger,
+  .print-hint,
+  .project-video {
+    display: none !important;
+  }
+
+  /* 列印時螢幕截圖限制高度，避免單張圖片就佔滿一整頁 */
+  .project-card__screenshot {
+    max-height: 70mm;
+    object-fit: cover;
+  }
+
+  /* ---------- 移除側邊欄留白，內容改為滿版 ---------- */
+  .main {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    display: block;
+  }
+
+  .section,
+  .profile-card {
+    max-width: 100%;
+  }
+
+  /* ---------- 移除陰影與動畫（不影響底色、圓角等視覺設計） ---------- */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* ---------- 字級調整 ---------- */
+  h1 { font-size: 18pt; }
+  .section__title { font-size: 15pt; }
+  h3 { font-size: 12pt; }
+
+  .profile-card__name { font-size: 18pt; }
+  .profile-card__en-name { font-size: 12pt; }
+
+  p, li {
+    font-size: 10.5pt;
+  }
+
+  .section {
+    padding: 14px 0;
+  }
+
+  /* ---------- 分頁控制：避免區塊被切半 ---------- */
+
+  /* 區塊標題不可與其後內容分離 */
+  h1, h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* 單一工作經歷、單一作品卡片、單一學經歷／證照、單一技能分類不可被切成兩頁 */
+  .job-item,
+  .project-card,
+  .cert-item,
+  .skill-group {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* 職稱／公司名稱標題與其副標不可分離，避免單獨留在頁尾 */
+  .job-item__header,
+  .cert-item__header {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* 段落與條列不可只留一兩行在頁尾／頁首 */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ---------- 連結處理：紙本無法點擊，改以文字顯示網址 ---------- */
+  .project-link {
+    text-decoration: underline;
+  }
+
+  .project-link::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: var(--text-muted);
+  }
+}

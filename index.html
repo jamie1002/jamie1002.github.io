@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>謝承翰 | Jamie</title>
+  <meta name="description" content="謝承翰（Jamie）：生技背景轉職，專長流程自動化與資料應用。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+
+  <!-- ===================== 側邊欄 / 手機版頂部列 ===================== -->
+  <header class="sidebar" id="sidebar">
+    <div class="sidebar__topbar">
+      <button class="sidebar__brand" id="brandBtn" type="button" aria-label="回到頁面頂端">謝承翰 <span>| Jamie</span></button>
+      <button class="hamburger" id="hamburgerBtn" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="sidebarPanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="sidebar__panel" id="sidebarPanel">
+      <nav class="sidebar__nav" aria-label="主要導覽">
+        <ul>
+          <li><a href="#about" class="nav-link" data-target="about">關於我</a></li>
+          <li><a href="#education" class="nav-link" data-target="education">學經歷與證照</a></li>
+          <li><a href="#skills" class="nav-link" data-target="skills">技術技能</a></li>
+          <li><a href="#portfolio" class="nav-link" data-target="portfolio">作品集</a></li>
+          <li><a href="#experience" class="nav-link" data-target="experience">工作經歷</a></li>
+          <li><a href="#autobiography" class="nav-link" data-target="autobiography">自傳</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar__actions">
+        <button class="btn btn--primary" id="exportPdfBtn" type="button">匯出 PDF 履歷</button>
+        <button class="btn btn--ghost" id="themeToggleBtn" type="button" aria-label="切換深色／淺色主題">
+          <span id="themeToggleIcon">🌙</span>
+          <span id="themeToggleText">深色模式</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 手機版選單開啟時的遮罩 -->
+  <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+  <!-- ===================== 主內容區 ===================== -->
+  <main class="main" id="main">
+
+    <!-- 頁首：照片 + 姓名 + 定位 + 聯絡資訊 -->
+    <header class="profile-card" id="top">
+      <div class="photo-frame" id="photoFrame">
+        <img src="assets/photo.png" alt="謝承翰的照片" id="profilePhoto"
+             onerror="this.style.display='none'; this.parentElement.classList.add('photo-frame--empty');">
+      </div>
+      <div class="profile-card__info">
+        <h1 class="profile-card__name">謝承翰 <span class="profile-card__en-name">Jamie</span></h1>
+        <p class="profile-card__tagline">生物科技背景 ✕ AI 應用規劃 ✕ 數據分析 ✕ 機器學習</p>
+        <ul class="contact-list">
+          <li class="contact-list__item"><span class="contact-list__icon" aria-hidden="true">🎂</span>1992/10</li>
+          <li class="contact-list__item"><span class="contact-list__icon" aria-hidden="true">📍</span>新北市新莊區</li>
+          <li class="contact-list__item"><span class="contact-list__icon" aria-hidden="true">📞</span>0919-965-982</li>
+          <li class="contact-list__item"><span class="contact-list__icon" aria-hidden="true">✉️</span>s6950gb@gmail.com</li>
+          <!--
+          <li class="contact-list__item"><span class="contact-list__icon" aria-hidden="true">🔗</span>
+            <a href="https://github.com/jamie1002" target="_blank" rel="noopener noreferrer">github.com/jamie1002</a>
+          </li>
+          -->
+        </ul>
+      </div>
+    </header>
+
+    <!-- 關於我 -->
+    <section class="section" id="about">
+      <h2 class="section__title">關於我</h2>
+      <p>
+        生物科學背景出身，有四年橫跨 ERP／BOM、庫存生管、採購與品管測試的實務經驗；與累積4年生技ISO與GMP研發、製程經歷。做事習慣從流程與例外狀況思考，重視細節與資料的正確性。在工作中為了解決重複又容易出錯的打單與庫存作業，開始自學以 AI 輔助開發自動化工具，也因此投入資料分析與 AI 應用領域。面對陌生的技術與工具，習慣主動摸索、遇到卡點就拆開來弄懂，並以務實、誠實的態度看待自己的能力與產出。
+      </p>
+      <div class="tags">
+        <span class="tag">IPAS AI 應用規劃師（中級）</span>
+        <span class="tag">AI協助開發實務經驗</span>
+        <span class="tag">自主開發 RPA 自動化系統</span>
+        <span class="tag">Python / SQL 基礎</span>
+        <span class="tag">YOLOv8 物件偵測應用</span>
+        <span class="tag">GMP／ISO 13485經驗</span>
+      </div>
+    </section>
+
+    <!-- 學經歷與證照 -->
+    <section class="section" id="education">
+      <h2 class="section__title">學經歷與證照</h2>
+
+      <div class="edu-group">
+        <h3>學歷</h3>
+        <div class="cert-item">
+          <div class="cert-item__header">
+            <span class="cert-item__title">國立中山大學｜生物科學系 學士</span>
+            <span class="cert-item__date">2011/09 – 2015/06</span>
+          </div>
+          <p>專題研究「台灣刺柏族群的族群遺傳分析」，獲系上專題比賽佳作</p>
+        </div>
+      </div>
+
+      <div class="edu-group">
+        <h3>訓練</h3>
+        <div class="cert-item">
+          <div class="cert-item__header">
+            <span class="cert-item__title">職前訓練｜數據分析暨機器學習應用班｜艾鍗學院</span>
+            <span class="cert-item__date">2026/05 – 2026/07</span>
+          </div>
+          <p>400+ 小時，涵蓋 Python 程式設計、資料分析與視覺化（Pandas／Matplotlib／Tableau）、機器學習統計基礎、關聯式資料庫與 SQL、Git 版本控制、AI 模型雲端部署與物件偵測應用、Kaggle 深度學習實戰、資料探勘（PCA／集群分析）、AI 資安威脅與防護</p>
+        </div>
+        <div class="cert-item">
+          <div class="cert-item__header">
+            <span class="cert-item__title">在職訓練｜Python 設計 AI 基礎班｜職訓達人</span>
+            <span class="cert-item__date">2026/03 – 2026/04</span>
+          </div>
+          <p>Python 基礎語法、自訂函數與類別、檔案存取、模組與套件安裝、演算法題型演練，並介紹 AI 輔助開發（Vibe Coding）實務</p>
+        </div>
+      </div>
+
+      <div class="edu-group">
+        <h3>證照</h3>
+        <div class="cert-item">
+          <div class="cert-item__header">
+            <span class="cert-item__title">iPAS AI 應用規劃師能力鑑定（中級／機器學習）｜經濟部產業人才能力鑑定</span>
+            <span class="cert-item__date">2026/07/31 – 2031/07/30</span>
+          </div>
+          <p>證書字號：A-J22-0705-2026</p>
+        </div>
+        <div class="cert-item">
+          <div class="cert-item__header">
+            <span class="cert-item__title">iPAS AI 應用規劃師能力鑑定（初級）｜經濟部產業人才能力鑑定</span>
+            <span class="cert-item__date">2026/06/02</span>
+          </div>
+          <p>證書字號：A-J11-6438-2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技術技能 -->
+    <section class="section" id="skills">
+      <h2 class="section__title">技術技能</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>程式語言</h3>
+          <p>Python、SQL</p>
+        </div>
+        <div class="skill-group">
+          <h3>自動化工具</h3>
+          <p>Playwright（網頁自動化 / RPA）、Google Apps Script</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI 協作開發</h3>
+          <p>以 AI 協助開發（AI-assisted development）完成前端網頁與自動化工具，負責需求定義、流程設計與反覆測試至穩定可用</p>
+        </div>
+        <div class="skill-group">
+          <h3>機器學習 / 資料</h3>
+          <p>機器學習基礎、資料前處理、YOLOv8 物件偵測（訓練與應用）</p>
+        </div>
+        <div class="skill-group">
+          <h3>企業系統</h3>
+          <p>ERP（鼎新 TIPTOP、Smart ERP、FlexSystem）、BOM 物料清單建置與維護</p>
+        </div>
+        <div class="skill-group">
+          <h3>品質管理</h3>
+          <p>IQC／IPQC／FQC 品管檢驗、ISO 13485、GMP、產品功能／穩定性／再現性測試</p>
+        </div>
+        <div class="skill-group">
+          <h3>版本控制與工具</h3>
+          <p>Git／GitHub、Excel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section class="section" id="portfolio">
+      <h2 class="section__title">作品集</h2>
+
+      <article class="project-card">
+        <h3 class="project-card__title">車況之眼 — 智慧巡檢系統</h3>
+        <p class="project-card__meta">類型：艾鍗學院期末專題 　｜　我的角色：前端開發與物件偵測模型訓練</p>
+        <p>
+          車輛租借前後拍照沒有標準，使用者常拍歪、拍糊，甚至沒拍到車也能上傳成功，後台只能靠人力一張張看，異常也很難第一時間抓出來。我設計了「AI 引導拍攝」流程：整合 YOLOv8n 物件偵測模型即時判斷拍攝角度、距離與車牌位置，畫面上會即時疊出引導框，提示水平有沒有歪、距離夠不夠、畫面清不清楚，使用者照著對準就能拍出可用的照片。另外針對車牌在傾斜角度下辨識失準的問題，訓練自訂車牌字元辨識模型，取代原本失效的 OCR 方案。此專案於課程成果展獲得廠商最佳中意獎。
+        </p>
+        <div class="project-video">
+          <iframe
+            src="https://www.youtube.com/embed/okMzih1K7Zk?si=biOUZ8ofMnCffZyt"
+            title="車況之眼 — 智慧巡檢系統 Demo 影片"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <a class="project-link" href="https://youtu.be/okMzih1K7Zk" target="_blank" rel="noopener noreferrer">▶ 觀看 Demo 影片</a>
+      </article>
+
+      <article class="project-card">
+        <h3 class="project-card__title">庫存 / BOM 查詢系統 Demo</h3>
+        <img class="project-card__screenshot" src="assets/projects/inventory-bom-demo.png" alt="庫存 / BOM 查詢系統 Demo 畫面截圖" loading="lazy">
+        <p>
+          前公司的 ERP 只能 5 個帳號同時登入，查詢介面也不好操作，但生管、採購、業務每天都要查庫存和 BOM 結構。我設計了一套自動化流程：後端以 RPA 定期登入 ERP 匯出庫存報表並寫入 Google Sheets，前端則整合庫存查詢與 BOM 樹狀展開功能，讓所有人都能即時查詢。本 Demo 為該系統的公開展示版本，以模擬資料呈現庫存跨倉查詢、安全庫存警示、BOM 組成結構展開等核心功能。
+        </p>
+        <a class="project-link" href="https://jamie1002.github.io/inventory-bom-demo/" target="_blank" rel="noopener noreferrer">查看 Demo →</a>
+      </article>
+
+      <article class="project-card">
+        <h3 class="project-card__title">訂單規則分類與批次合併 Demo</h3>
+        <img class="project-card__screenshot" src="assets/projects/order-batching-demo.png" alt="訂單規則分類與批次合併 Demo 畫面截圖" loading="lazy">
+        <p>
+          原公司需要把多通路的訂單依產品、檔期、合作案等規則手動分類，合併後再登打到 ERP，作業重複又容易出錯。我設計了一套規則引擎，依品號與品名關鍵字自動判斷訂單所屬規則，並將同規則、同出貨日的訂單自動合併為單一 ERP 銷售單，同時保留人工確認關卡（Human-in-the-loop）避免自動化誤判。本 Demo 為該規則引擎的簡化公開版本，可即時編輯訂單並觀察分類與合併結果。
+        </p>
+        <a class="project-link" href="https://jamie1002.github.io/order-batching-demo/" target="_blank" rel="noopener noreferrer">查看 Demo →</a>
+      </article>
+    </section>
+
+    <!-- 工作經歷 -->
+    <section class="section" id="experience">
+      <h2 class="section__title">工作經歷</h2>
+      <div class="timeline">
+
+        <div class="job-item">
+          <div class="job-item__header">
+            <div class="job-item__title-row">
+              <span class="job-item__title">產品工程師｜億觀生物科技股份有限公司（aidmics）</span>
+              <span class="job-item__date">2022/06 – 2026/04</span>
+            </div>
+            <p class="job-item__subtitle">生物科技研發人員｜台北市大安區</p>
+          </div>
+          <ol class="job-item__list">
+            <li>校園訂單處理：透過電話、信件、Line 官方帳號溝通釐清學校採購需求，開立報價單、安排出貨並於 ERP 系統建立銷售單，確保庫存正確扣帳。</li>
+            <li>自營電商營運：維護官網金流（TapPay）與物流（ShipAny）API 串接狀態，建立促銷商品與組合包 ERP 品號，執行揀貨包裝與訂單出貨。</li>
+            <li>合作電商管理：管理 Momo 寄倉庫存與補貨申請，處理親子天下、博客來等平台轉單出貨與 ERP 移倉作業。</li>
+            <li>採購與進口：監控關鍵零組件安全庫存並主動採購，執行供應商尋商詢比議價，處理海外採購進口報關文件與集運倉協調。</li>
+            <li>庫存與 BOM 管理：執行年度盤點確保帳物相符，負責新產品／新料件 ERP 品號建檔並維護 BOM 物料清單。</li>
+            <li>生產排程：統整各通路銷售預測與庫存水位排定廠內生產計畫，協調大訂單與特規品的生產組裝時程。</li>
+            <li>品管檢驗：執行進料檢驗（IQC）與廠內組立抽驗（IPQC/OQC），進行新產品／替代料功能性與穩定性測試。</li>
+            <li>試量產與樣品製作：新產品導入量產前執行小批量試產驗證，並手工製作測試樣品與客戶展示樣品。</li>
+            <li>SOP 建立：撰寫產品組裝、出貨作業、售後退換貨標準作業程序，統一產線品質並降低錯件率。</li>
+            <li>檢測認證申請：安排第三方實驗室檢測，與進行國內通路認證文件申請（電池法規、玩具檢驗等）。</li>
+            <li>RPA 自動化開發：以 AI 輔助開發完成兩項自動化流程——(1) 訂單自動打單：將原本約 30 筆訂單需 1 小時人工核對、登打的流程，縮短至 3 分鐘內自動完成；(2) 庫存自動化匯出：原 ERP 系統僅開放 5 人登入查詢、介面操作不便，改為自動化每小時更新庫存並提供網頁查詢介面，全員皆可查詢並自訂常用項目。</li>
+          </ol>
+        </div>
+
+        <div class="job-item">
+          <div class="job-item__header">
+            <div class="job-item__title-row">
+              <span class="job-item__title">技術師｜聯合生物製藥股份有限公司</span>
+              <span class="job-item__date">2021/07 – 2022/06</span>
+            </div>
+            <p class="job-item__subtitle">生產技術／製程工程師｜新竹縣湖口鄉</p>
+          </div>
+          <ol class="job-item__list">
+            <li>依 GMP 作業規範及 SOP 進行蛋白質藥物製程作業：領料、秤料、管線備製、滅菌、原料運輸、buffer 配製、酸鹼調整、過濾、Filter 完整性測試、協助工程師進行純化作業。</li>
+            <li>製程前準備：耗材採購、新物料料號建立、新物料風險評估、區域放行申請。</li>
+            <li>擔任作業負責人、規劃作業分工、帶領團隊有效率正確地完成製程作業。</li>
+            <li>完成三批疫苗連續批次下游生產。</li>
+            <li>建立 Filter 完整性測試清單列表，統整並更新測試程式的設定。</li>
+            <li>建立庫存清單，以便管理耗材、消耗品等數量。</li>
+          </ol>
+        </div>
+
+        <div class="job-item">
+          <div class="job-item__header">
+            <div class="job-item__title-row">
+              <span class="job-item__title">定期約聘業務助理｜衛生福利部食品藥物管理署</span>
+              <span class="job-item__date">2020/05 – 2021/05</span>
+            </div>
+          </div>
+          <ol class="job-item__list">
+            <li>協助辦理藥局各期防疫口罩之郵局配送量及口罩銷售量等帳務資訊核對，進行口罩銷售金額、包裝補帖與應收付款核算、查核與出帳等作業。</li>
+            <li>製作查帳進度表、清帳明細表、每月收款總表等報表。</li>
+            <li>協助辦理口罩實名制(1.0)帳款每月解繳作業，共協助完成 7 次解繳作業。</li>
+            <li>統整組員清查全臺提早退出實名制口罩販賣之藥局，總銷售、庫存回收、繳款金額等清單。</li>
+          </ol>
+        </div>
+
+        <div class="job-item">
+          <div class="job-item__header">
+            <div class="job-item__title-row">
+              <span class="job-item__title">儲備幹部｜易遊網股份有限公司</span>
+              <span class="job-item__date">2019/07 – 2020/03</span>
+            </div>
+            <p class="job-item__subtitle">OP／旅行社人員｜台北市中山區</p>
+          </div>
+          <ol class="job-item__list">
+            <li>處理國內訂房訂單，為客人向飯店聯繫傳達客人需求的服務。</li>
+            <li>排除客人國旅卡核銷問題。</li>
+            <li>解決客人旅途中突發狀況。</li>
+          </ol>
+        </div>
+
+        <div class="job-item">
+          <div class="job-item__header">
+            <div class="job-item__title-row">
+              <span class="job-item__title">助理工程師｜泰博科技股份有限公司</span>
+              <span class="job-item__date">2016/10 – 2019/06</span>
+            </div>
+            <p class="job-item__subtitle">醫療器材研發工程師｜新北市五股區</p>
+          </div>
+          <ol class="job-item__list">
+            <li>主導一件 ODM 產品導入量產出貨。</li>
+            <li>血糖試片測試：產品的功能、再現性及穩定性。</li>
+            <li>血糖試片生產：打點式、連續自動化式。</li>
+            <li>QC 檢測：IPQC、FQC。</li>
+            <li>Meter 測試參數調整、送審臨床樣品（FDA、TUV）。</li>
+            <li>新專案接洽後的試量產測試，導入量產後的產品生產品質追蹤。</li>
+            <li>ISO 文件記錄、COA、測試步驟 SOP。</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 自傳 -->
+    <section class="section" id="autobiography">
+      <h2 class="section__title">自傳</h2>
+
+      <div class="autobio-block">
+        <h3>跨領域的實務基礎</h3>
+        <p>
+          我畢業於國立中山大學生物科學系，我的職涯從醫療器材和生技產業開始。在泰博科技參與血糖試片的研發、測試與量產，累積了完整的產品驗證與品管（IPQC／FQC）經驗；在聯合生物製藥的 GMP 環境中，負責蛋白質藥物製程並帶領團隊完成連續批次生產，培養了嚴謹的流程與品質意識。這些經驗養成了我的工作習慣：任何流程都要能標準化、可追溯，而且事先想好例外狀況怎麼處理。
+        </p>
+      </div>
+
+      <div class="autobio-block">
+        <h3>從自動化到轉職的契機</h3>
+        <p>
+          在億觀生物科技擔任產品工程師期間，我的工作橫跨電商營運、採購、倉儲、生管與品管，每天都有大量重複又容易出錯的 ERP 打單和庫存整理要處理。為了解決這些麻煩，我開始試著用 AI 輔助開發，自己定義需求、設計流程，再反覆測試修改到穩定可用，最後做出兩套工具：ERP 訂單自動打單（原本 1 小時的人工流程縮短到 3 分鐘）和庫存自動化匯出（原本只有 5 人能查，改成全員都能透過網頁即時查詢）。這是我第一次用程式解決真實問題，也讓我對自動化與資料處理產生濃厚興趣。
+        </p>
+      </div>
+
+      <div class="autobio-block">
+        <h3>主動進修與正式轉職</h3>
+        <p>
+          我在還在職的時候就先去上了 Python 基礎課程，確認自己真的有興趣，才決定正式轉職，報名艾鍗學院的數據分析暨機器學習應用班做系統性的學習。期末專題「車況之眼-智慧巡檢系統」中，我負責前端的開發與物件偵測模型訓練，設計 AI 引導拍攝流程，解決拍攝角度不一、沒拍到車輛也能過關的痛點，該作品於成果展獲得廠商最佳中意獎。同一段期間我也自主準備，考取了 IPAS AI 應用規劃師初級與中級（機器學習）證照。
+        </p>
+      </div>
+
+      <div class="autobio-block">
+        <h3>我能帶來的價值</h3>
+        <p>
+          雖然我的背景不是資工本科，但我累積了非常豐富的實務應用與工作經歷：真實的企業系統（ERP／BOM）操作經驗、跨部門協作與流程設計能力，以及品管測試的嚴謹訓練。加上現在具備的程式與資料處理能力，我有信心能快速理解實務上的問題，並且真的把它解決掉，為團隊帶來務實的貢獻。
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 列印前提示 -->
+  <div class="print-hint" id="printHint" role="status" aria-live="polite">
+    即將開啟列印視窗，請在「目的地」選擇「另存為 PDF」，並確認「邊界」為預設值、勾選「背景圖形」為開啟（保留設計配色），即可取得排版良好的 PDF 履歷。
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
