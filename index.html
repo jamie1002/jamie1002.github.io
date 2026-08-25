@@ -110,6 +110,8 @@
         <span class="tag">YOLOv8 物件偵測（訓練與部署）</span>
         <span class="tag">TensorFlow.js 邊緣推論</span>
         <span class="tag">Playwright RPA 自動化</span>
+        <span class="tag">FastAPI / PostgreSQL / Docker</span>
+        <span class="tag">CI/CD 三層測試（pytest / Vitest / Playwright）</span>
         <span class="tag">Python / SQL 基礎</span>
         <span class="tag">IPAS AI 應用規劃師（中級）</span>
         <span class="tag">IQC／IPQC／FQC 品管檢驗</span>
@@ -279,6 +281,59 @@
 
         <a class="project-link" href="https://jamie1002.github.io/inventory-bom-demo/" target="_blank" rel="noopener noreferrer">查看 Demo →</a>
       </article>
+
+      <!-- 專案四：企業員工出勤管理系統 -->
+      <article class="project-card">
+        <h3 class="project-card__title">企業員工出勤管理系統 — Employee Portal</h3>
+        <p class="project-card__meta">類型：個人練習專案（未實務應用）　｜　我的角色：需求定義、假勤商業邏輯設計、實機測試除錯、匯出報表設計</p>
+        <img class="project-card__screenshot" src="assets/projects/employee-portal-demo.png" alt="企業員工出勤管理系統 Demo 畫面截圖" loading="lazy">
+
+        <div class="project-card__block">
+          <h4>問題</h4>
+          <p>
+            想找一個規模更完整的題目練習 PostgreSQL（SQL）、Docker、API 設計與 CI/CD 的實務應用，選了企業出勤管理系統作為題目：打卡、請假、加班、場地借用四種流程要同時處理，且必須符合勞基法假別規則（特休依到職週年制、事假與病假依曆年制）。邊界條件極多，非常適合用來練習把商業邏輯定義清楚並驗證正確性。
+          </p>
+        </div>
+
+        <div class="project-card__block">
+          <h4>做法</h4>
+          <p>
+            我以 AI 輔助開發建置了一套涵蓋前後端與資料庫的全端出勤管理系統。後端以 FastAPI 搭配 asyncpg 原生 SQL 撰寫 API，配合 Docker Compose 隔離本機開發與測試資料庫；CI 透過 GitHub Actions 建立 pytest、Vitest 與 Playwright 三層測試防護網，CD 則整合 Vercel 與 Render 自動部署。透過六輪實機測試（v1.1–v1.6）持續找出邏輯缺陷，逐步收斂工時計算、出勤事實可追溯性與權限邊界。
+          </p>
+        </div>
+
+        <div class="project-card__block">
+          <h4>技術架構</h4>
+          <ul class="stack-list">
+            <li>React + Vite</li>
+            <li>Tailwind CSS</li>
+            <li>FastAPI</li>
+            <li>PostgreSQL 16（asyncpg 原生 SQL）</li>
+            <li>Docker Compose</li>
+            <li>GitHub Actions（pytest / Vitest / Playwright）</li>
+            <li>Vercel / Render / Neon.tech</li>
+          </ul>
+        </div>
+
+        <div class="project-card__block">
+          <h4>當時的技術選擇與設計</h4>
+          <ul>
+            <li><strong>Docker Compose 切分雙 Port 資料庫環境。</strong>本機開發以 Docker Compose 建立獨立的開發與測試容器（5432 / 5433 兩個 Port 區隔），避免執行測試時清空開發環境資料。雲端部署則採用 Vercel（前端）、Render（後端）與 Neon.tech（PostgreSQL）。</li>
+            <li><strong>GitHub Actions 設定三層自動化測試。</strong>CI 設定 pytest 後端整合測試、Vitest 前端測試與 Playwright 端對端測試，於 CI 環境以 services 啟動 PostgreSQL 跑 migration 與 seed 後才執行測試，失敗時自動上傳截圖與 trace；CD 採用 GitHub 原生整合，push 即自動建置部署。</li>
+            <li><strong>彈性工時採「封頂式與累積式取最小值」。</strong>定義遲到寬限僅在到班端生效、下班無寬限。實機測試發現無上限累積工時模型會讓極端遲到將整天工時算滿或算到半夜，因此重新定義為「封頂式與累積式取最小值」並加上秒數截斷。</li>
+            <li><strong>出勤資料模型採「原始打卡存事實，生效值即時 Join」。</strong>發現補打卡核准時直接覆蓋紀錄會讓原始打卡事實遺失無法追溯。重新定義為「原始打卡只存事實，生效值於查詢時即時 join 已核准申請單計算」，確保資料可追溯不遺失。</li>
+            <li><strong>加班與假勤規則精準防呆。</strong>加班以 30 分鐘為單位捨去不足額時數，並加上起算點防呆避免與正常工時重疊；請假自動排除週末與國定假日、處理與到班緩衝時間的交集，且請假午休固定不隨到班時間浮動。</li>
+            <li><strong>三種視角匯出報表與角色權限控管。</strong>設計匯出報表模組，將出勤資料拆分為生效值、原始打卡、異動紀錄三種視角分別匯出，並依角色限制主管僅能匯出所屬部門資料。透過六輪實機測試（v1.1–v1.6）持續修補邏輯漏洞。</li>
+          </ul>
+        </div>
+
+        <div class="project-card__block">
+          <h4>成果</h4>
+          <p>完成一套涵蓋打卡、假勤配額、審核流程、場地借用與多視角匯出報表的多角色出勤管理系統，CI 三層測試全綠、CD 自動部署，並上線提供公開展示。</p>
+        </div>
+
+        <a class="project-link" href="https://employee-portal-frontend-fawn.vercel.app/" target="_blank" rel="noopener noreferrer">查看 Demo →</a>
+      </article>
     </section>
 
     <!-- 技術技能 -->
@@ -286,16 +341,16 @@
       <h2 class="section__title">技術技能</h2>
       <div class="skills-grid">
         <div class="skill-group">
-          <h3>程式語言</h3>
-          <p>Python（Pandas、gspread、Tkinter、logging）、SQL</p>
+          <h3>程式語言與後端</h3>
+          <p>Python（FastAPI、Pandas、gspread、Tkinter、logging）、SQL（PostgreSQL / asyncpg 原生 SQL、Docker Compose 資料庫環境建置）</p>
         </div>
         <div class="skill-group">
           <h3>AI 影像應用</h3>
           <p>YOLOv8 物件偵測（資料標註、模型訓練與評估）、自訂字元辨識模型訓練、模型格式轉換（PyTorch → SavedModel → TensorFlow.js）、瀏覽器端即時推論、影像前處理（清晰度判定、EMA 濾波、座標換算）</p>
         </div>
         <div class="skill-group">
-          <h3>自動化工具</h3>
-          <p>Playwright（網頁自動化 / RPA、無頭瀏覽器）、Google Apps Script、Google Sheets API、無人值守設計（自動重試、錯誤截圖、日誌管理）</p>
+          <h3>自動化工具與 CI/CD</h3>
+          <p>Playwright（網頁自動化 / RPA、無頭瀏覽器）、GitHub Actions（pytest / Vitest / Playwright 三層測試）、Google Apps Script、Google Sheets API、無人值守設計（自動重試、錯誤截圖、日誌管理）</p>
         </div>
         <div class="skill-group">
           <h3>資料分析</h3>
@@ -303,7 +358,7 @@
         </div>
         <div class="skill-group">
           <h3>前端與部署</h3>
-          <p>React、Vite、PWA、HTML / CSS / JavaScript、Bootstrap、GitHub Pages</p>
+          <p>React、Vite、Tailwind CSS、PWA、HTML / CSS / JavaScript、Bootstrap、Vercel / Render / Neon.tech / GitHub Pages</p>
         </div>
         <div class="skill-group">
           <h3>企業系統</h3>
